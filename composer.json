@@ -1,0 +1,30 @@
+{
+    "name": "dmitriikoziuk/yii2-base",
+    "description": "Base library and foundation components for all Yii2 dmitriikoziuk extensions.",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "extension",
+        "dmitriikoziuk"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitrii Koziuk",
+            "email": "dmitriikoziuk@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DmitriiKoziuk\\yii2Base\\": "src"
+        }
+    },
+    "extra": {
+        "bootstrap": "DmitriiKoziuk\\yii2Base\\Bootstrap"
+    }
+}

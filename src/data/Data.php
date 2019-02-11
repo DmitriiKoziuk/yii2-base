@@ -1,19 +1,10 @@
 <?php
 namespace DmitriiKoziuk\yii2Base\data;
 
-use yii\base\Model;
-
-class Data extends Model
+class Data
 {
-    public function getErrorsAsString(): string
+    public function __get($name)
     {
-        $string = '';
-        foreach ($this->getErrors() as $errorName => $messages) {
-            $string .= $errorName . PHP_EOL;
-            foreach ($messages as $message) {
-                $string .= '-' . $message . PHP_EOL;
-            }
-        }
-        return $string;
+        return $this->{'get' . $name}();
     }
 }

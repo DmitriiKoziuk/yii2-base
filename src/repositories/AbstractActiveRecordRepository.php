@@ -6,7 +6,7 @@ use DmitriiKoziuk\yii2Base\exceptions\EntityNotValidException;
 use DmitriiKoziuk\yii2Base\exceptions\EntitySaveException;
 use DmitriiKoziuk\yii2Base\exceptions\EntityDeleteException;
 
-class EntityRepository
+abstract class AbstractActiveRecordRepository
 {
     /**
      * @param ActiveRecord $record

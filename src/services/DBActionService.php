@@ -6,7 +6,7 @@ use yii\db\Transaction;
 use yii\db\Exception;
 use DmitriiKoziuk\yii2Base\exceptions\ExternalComponentException;
 
-class EntityActionService
+class DBActionService
 {
     /**
      * @var Connection|null

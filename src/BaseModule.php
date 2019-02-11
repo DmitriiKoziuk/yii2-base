@@ -2,7 +2,7 @@
 namespace DmitriiKoziuk\yii2Base;
 
 use yii\base\Application as BaseApp;
-use DmitriiKoziuk\yii2Base\repositories\EntityRepository;
+use DmitriiKoziuk\yii2Base\repositories\ActiveRecordRepository;
 use DmitriiKoziuk\yii2Base\helpers\UrlHelper;
 use DmitriiKoziuk\yii2Base\helpers\FileHelper;
 
@@ -36,8 +36,8 @@ final class BaseModule extends \yii\base\Module
 
     private function _registerClassesToDIContainer()
     {
-        $this->diContainer->setSingleton(EntityRepository::class, function () {
-            return new EntityRepository();
+        $this->diContainer->setSingleton(ActiveRecordRepository::class, function () {
+            return new ActiveRecordRepository();
         });
         $this->diContainer->setSingleton(UrlHelper::class, function () {
             return new UrlHelper();

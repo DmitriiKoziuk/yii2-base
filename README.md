@@ -1,6 +1,6 @@
 Base Dmitrii Koziuk library yii2
 ========================
-Base library and foundation components for all Yii2 dmitriikoziuk extensions.
+Base library and foundation components for all Yii2 Dmitrii Koziuk extensions.
 
 Installation
 ------------
@@ -16,7 +16,7 @@ php composer.phar require dmitriikoziuk/yii2-base
 or add
 
 ```
-"dmitriikoziuk/yii2-base": "~1.0"
+"dmitriikoziuk/yii2-base": "^0.1"
 ```
 
 to the require section of your `composer.json` file.

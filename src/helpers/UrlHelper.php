@@ -5,7 +5,7 @@ use yii\helpers\Inflector;
 
 class UrlHelper
 {
-    public static function slugFromString(string $string): string
+    public static function getSlugFromString(string $string): string
     {
         $string = trim($string);
         $string = Inflector::transliterate($string);

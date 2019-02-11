@@ -11,8 +11,8 @@ final class Bootstrap implements BootstrapInterface
      */
     public function bootstrap($app)
     {
-        $app->bootstrap[] = 'dkBase';
-        $app->setModule('dkBase', [
+        $app->bootstrap[] = BaseModule::ID;
+        $app->setModule(BaseModule::ID, [
             'class' => BaseModule::class,
             'diContainer' => \Yii::$container,
         ]);

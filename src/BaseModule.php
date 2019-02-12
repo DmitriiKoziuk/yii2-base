@@ -2,10 +2,11 @@
 namespace DmitriiKoziuk\yii2Base;
 
 use yii\base\Application as BaseApp;
+use DmitriiKoziuk\yii2ModuleManager\interfaces\ModuleInterface;
 use DmitriiKoziuk\yii2Base\helpers\UrlHelper;
 use DmitriiKoziuk\yii2Base\helpers\FileHelper;
 
-final class BaseModule extends \yii\base\Module
+final class BaseModule extends \yii\base\Module implements ModuleInterface
 {
     const ID = 'dk-base';
 
@@ -22,6 +23,21 @@ final class BaseModule extends \yii\base\Module
         $app = $this->module;
         $this->_registerTranslation($app);
         $this->_registerClassesToDIContainer();
+    }
+
+    public static function getId(): string
+    {
+        return self::ID;
+    }
+
+    public function getBackendMenuItems(): array
+    {
+        return [];
+    }
+
+    public static function requireOtherModulesToBeActive(): array
+    {
+        return [];
     }
 
     private function _registerTranslation(BaseApp $app)

@@ -3,6 +3,7 @@ namespace DmitriiKoziuk\yii2Base;
 
 use yii\base\BootstrapInterface;
 use yii\web\Application as WebApp;
+use DmitriiKoziuk\yii2ModuleManager\services\ModuleInitService;
 
 final class Bootstrap implements BootstrapInterface
 {
@@ -11,11 +12,12 @@ final class Bootstrap implements BootstrapInterface
      */
     public function bootstrap($app)
     {
-        $app->bootstrap[] = BaseModule::ID;
-        $app->setModule(BaseModule::ID, [
-            'class' => BaseModule::class,
-            'diContainer' => \Yii::$container,
-        ]);
+        ModuleInitService::registerModule(BaseModule::class, function () {
+            return [
+                'class' => BaseModule::class,
+                'diContainer' => \Yii::$container,
+            ];
+        });
 
         /**
          * When application in developer mode automatically reload assets when page requested.

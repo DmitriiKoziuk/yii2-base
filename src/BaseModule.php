@@ -2,6 +2,7 @@
 namespace DmitriiKoziuk\yii2Base;
 
 use yii\base\Application as BaseApp;
+use yii\console\Application as ConsoleApp;
 use DmitriiKoziuk\yii2ModuleManager\interfaces\ModuleInterface;
 use DmitriiKoziuk\yii2Base\helpers\UrlHelper;
 use DmitriiKoziuk\yii2Base\helpers\FileHelper;
@@ -21,6 +22,7 @@ final class BaseModule extends \yii\base\Module implements ModuleInterface
     {
         /** @var BaseApp $app */
         $app = $this->module;
+        $this->_initLocalProperties($app);
         $this->_registerTranslation($app);
         $this->_registerClassesToDIContainer();
     }
@@ -38,6 +40,13 @@ final class BaseModule extends \yii\base\Module implements ModuleInterface
     public static function requireOtherModulesToBeActive(): array
     {
         return [];
+    }
+
+    private function _initLocalProperties(BaseApp $app)
+    {
+        if ($app instanceof ConsoleApp) {
+            $app->controllerMap['migrate']['class'] = 'yii\console\controllers\MigrateController';
+        }
     }
 
     private function _registerTranslation(BaseApp $app)

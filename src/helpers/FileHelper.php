@@ -2,6 +2,7 @@
 namespace DmitriiKoziuk\yii2Base\helpers;
 
 use DmitriiKoziuk\yii2Base\exceptions\CouldNotCreateDirectoryException;
+use DmitriiKoziuk\yii2Base\exceptions\DirectoryNotExistException;
 
 class FileHelper
 {
@@ -15,6 +16,28 @@ class FileHelper
             if (! mkdir($path, 0755, true)) {
                 throw new CouldNotCreateDirectoryException("Could not create directory '{$path}'");
             }
+        }
+    }
+
+    /**
+     * @param string $dir
+     * @throws DirectoryNotExistException
+     */
+    public function removeDirectoryRecursive(string $dir): void
+    {
+        if (is_dir($dir)) {
+            $objects = scandir($dir);
+            foreach ($objects as $object) {
+                if ($object != "." && $object != "..") {
+                    if (is_dir($dir."/".$object))
+                        $this->removeDirectoryRecursive($dir."/".$object);
+                    else
+                        unlink($dir."/".$object);
+                }
+            }
+            rmdir($dir);
+        } else {
+            throw new DirectoryNotExistException("Directory '{$dir}' not exist.");
         }
     }
 }

@@ -39,7 +39,7 @@ class FileHelperTest extends Unit
         $outputDirectory = codecept_output_dir();
         $directoryPath = $outputDirectory . $directoryName;
         $fileHelper = new FileHelper();
-        $fileHelper->removeDirectoryRecursive($directoryPath);
+        $fileHelper->removeDirectoryRecursively($directoryPath);
     }
 
     /**
@@ -51,7 +51,7 @@ class FileHelperTest extends Unit
     {
         $this->expectException(DirectoryNotExistException::class);
         $fileHelper = new FileHelper();
-        $fileHelper->removeDirectoryRecursive($directoryName);
+        $fileHelper->removeDirectoryRecursively($directoryName);
     }
 
     public function dataProviderTestRemoveDirectoryRecursive()

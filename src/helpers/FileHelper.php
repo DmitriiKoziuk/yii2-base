@@ -23,14 +23,14 @@ class FileHelper
      * @param string $dir
      * @throws DirectoryNotExistException
      */
-    public function removeDirectoryRecursive(string $dir): void
+    public function removeDirectoryRecursively(string $dir): void
     {
         if (is_dir($dir)) {
             $objects = scandir($dir);
             foreach ($objects as $object) {
                 if ($object != "." && $object != "..") {
                     if (is_dir($dir."/".$object))
-                        $this->removeDirectoryRecursive($dir."/".$object);
+                        $this->removeDirectoryRecursively($dir."/".$object);
                     else
                         unlink($dir."/".$object);
                 }

@@ -31,7 +31,7 @@ class UrlHelperTest extends Unit
             ],
             'With slash' => [
                 'Apple/iPhone XS Max 64Gb Space Gray (MT502)',
-                'Apple-iPhone-XS-Max-64Gb-Space-Gray-MT502'
+                'Apple/iPhone-XS-Max-64Gb-Space-Gray-MT502'
             ],
         ];
     }

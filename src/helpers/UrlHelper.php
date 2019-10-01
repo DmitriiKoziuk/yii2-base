@@ -14,7 +14,6 @@ class UrlHelper
         $string = preg_replace('/[-]{2,}/', '-', $string);
         $string = preg_replace('/[\/]{2,}/', '/', $string);
         $string = trim($string, '-');
-        $string = mb_strtolower($string);
         return $string;
     }
 }

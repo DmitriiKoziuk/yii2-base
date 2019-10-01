@@ -1,18 +1,24 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace DmitriiKoziuk\yii2Base;
 
+use yii\base\Application;
 use yii\base\BootstrapInterface;
+use yii\base\InvalidConfigException;
+use yii\di\NotInstantiableException;
 use yii\web\Application as WebApp;
-use DmitriiKoziuk\yii2ModuleManager\services\ModuleInitService;
+use DmitriiKoziuk\yii2ModuleManager\services\ModuleRegistrationService;
 
 final class Bootstrap implements BootstrapInterface
 {
     /**
-     * @param \yii\base\Application $app
+     * @param Application $app
+     * @throws InvalidConfigException
+     * @throws NotInstantiableException
      */
     public function bootstrap($app)
     {
-        ModuleInitService::registerModule(BaseModule::class, function () {
+        ModuleRegistrationService::addModule(BaseModule::class, function () use ($app) {
             return [
                 'class' => BaseModule::class,
                 'diContainer' => \Yii::$container,

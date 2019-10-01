@@ -2,18 +2,17 @@
 namespace DmitriiKoziuk\yii2Base\repositories;
 
 use yii\db\ActiveRecord;
+use DmitriiKoziuk\yii2Base\interfaces\ActiveRecordRepositoryInterface;
 use DmitriiKoziuk\yii2Base\exceptions\EntityNotValidException;
 use DmitriiKoziuk\yii2Base\exceptions\EntitySaveException;
 use DmitriiKoziuk\yii2Base\exceptions\EntityDeleteException;
 
-abstract class AbstractActiveRecordRepository
+abstract class AbstractActiveRecordRepository implements ActiveRecordRepositoryInterface
 {
     /**
-     * @param ActiveRecord $record
-     * @throws \DmitriiKoziuk\yii2Base\exceptions\EntityNotValidException
-     * @throws \DmitriiKoziuk\yii2Base\exceptions\EntitySaveException
+     * @inheritDoc
      */
-    public function save(ActiveRecord $record): void
+    public function save(ActiveRecord $record): ActiveRecord
     {
         $className = get_class($record);
         if (! $record->validate()) {
@@ -24,6 +23,7 @@ abstract class AbstractActiveRecordRepository
         if (! $record->save()) {
             throw new EntitySaveException("Can't save entity '{$className}'");
         }
+        return $record;
     }
 
     /**

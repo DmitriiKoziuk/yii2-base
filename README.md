@@ -12,11 +12,3 @@ Either run
 ```
 php composer.phar require dmitriikoziuk/yii2-base
 ```
-
-or add
-
-```
-"dmitriikoziuk/yii2-base": "~0.2.0"
-```
-
-to the require section of your `composer.json` file.

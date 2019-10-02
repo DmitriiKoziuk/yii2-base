@@ -3,11 +3,10 @@ namespace DmitriiKoziuk\yii2Base;
 
 use yii\base\Application as BaseApp;
 use yii\console\Application as ConsoleApp;
-use DmitriiKoziuk\yii2ModuleManager\interfaces\ModuleInterface;
 use DmitriiKoziuk\yii2Base\helpers\UrlHelper;
 use DmitriiKoziuk\yii2Base\helpers\FileHelper;
 
-final class BaseModule extends \yii\base\Module implements ModuleInterface
+final class BaseModule extends \yii\base\Module
 {
     const ID = 'dk-base';
 
@@ -25,21 +24,6 @@ final class BaseModule extends \yii\base\Module implements ModuleInterface
         $this->_initLocalProperties($app);
         $this->_registerTranslation($app);
         $this->_registerClassesToDIContainer();
-    }
-
-    public static function getId(): string
-    {
-        return self::ID;
-    }
-
-    public function getBackendMenuItems(): array
-    {
-        return [];
-    }
-
-    public static function requireOtherModulesToBeActive(): array
-    {
-        return [];
     }
 
     private function _initLocalProperties(BaseApp $app)
@@ -60,10 +44,11 @@ final class BaseModule extends \yii\base\Module implements ModuleInterface
 
     private function _registerClassesToDIContainer()
     {
-        $this->diContainer->setSingleton(UrlHelper::class, function () {
+        $diContainer = \Yii::$container;
+        $diContainer->setSingleton(UrlHelper::class, function () {
             return new UrlHelper();
         });
-        $this->diContainer->setSingleton(FileHelper::class, function () {
+        $diContainer->setSingleton(FileHelper::class, function () {
             return new FileHelper();
         });
     }

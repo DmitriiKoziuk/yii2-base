@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace DmitriiKoziuk\yii2Base\helpers;
 
 use DmitriiKoziuk\yii2Base\exceptions\CouldNotCreateDirectoryException;

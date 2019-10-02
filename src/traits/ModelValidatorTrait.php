@@ -5,7 +5,7 @@ namespace DmitriiKoziuk\yii2Base\traits;
 use yii\base\Model;
 use DmitriiKoziuk\yii2Base\exceptions\DataNotValidException;
 
-trait ModelValidator
+trait ModelValidatorTrait
 {
     /**
      * @param Model[] $models

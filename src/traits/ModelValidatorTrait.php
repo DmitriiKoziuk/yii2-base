@@ -12,7 +12,7 @@ trait ModelValidatorTrait
      * @param DataNotValidException $preferException
      * @throws DataNotValidException
      */
-    public function validateModels(array $models, DataNotValidException $preferException = null): void
+    protected function validateModels(array $models, DataNotValidException $preferException = null): void
     {
         $preferException = $preferException ?? new DataNotValidException('Model(s) not valid.');
         foreach ($models as $model) {
